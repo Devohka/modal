@@ -58,11 +58,11 @@ margin-left: auto;
 
     background: #6F58C9;
 `
-function Modal({ close, closeKey }) {
+function Modal({ close}) {
     return (
         <>
         
-        <Form onKeyDown={closeKey}>
+        <Form>
                 <h1>Заповніть Форму</h1>
                 <SubmitClose type="button" onClick={close} >
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">

@@ -28,8 +28,10 @@ class App extends Component {
   // };
 
   componentDidMount() {
+    
     this.save = setInterval(() => {
       if (this.state.show === true) {
+        window.addEventListener("keydown", this.noShow);
         localStorage.setItem("show", JSON.stringify(this.setState(
           {
             show: true,
@@ -44,8 +46,9 @@ class App extends Component {
 
   componentWillUnmount() {
     this.svae = setInterval(() => {
-
+     
       if (this.state.show === false) {
+        window.removeEventListener("keydown", this.noShow);
         localStorage.removeItem("show");
         console.log("delete");
       };
@@ -70,12 +73,12 @@ class App extends Component {
     );
   };
 
-  // noShow = (e) => {
-  //   e.preventDefault();
-  //   if(e.code === "Escape") {
-  //    this.Show();
-  //   };
-  // };
+  noShow = (e) => {
+    // e.preventDefault();
+    if(e.code === "Escape") {
+     this.Show();
+    };
+  };
 
   render() {
     return (
@@ -90,7 +93,7 @@ class App extends Component {
        
         {
           this.state.show ?
-            <Modal close={this.Show} closeKey={this.noShow} /> :
+            <Modal close={this.Show} /> :
             console.log(1)
 
         }
